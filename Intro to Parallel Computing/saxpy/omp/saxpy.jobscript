@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --job-name="saxpy"
+#SBATCH --output="saxpy-%j.out"
+#SBATCH --partition=trial
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem=16G
+#SBATCH --account=RFST
+#SBATCH --export=ALL
+#SBATCH -t 00:05:00
+
+for N in 1 2 4 8 16
+do
+	echo "Starting SAXPY with $N threads" 
+	export OMP_NUM_THREADS=$N
+	./saxpy_omp.exe
+	wait
+	echo ""
+done
+
