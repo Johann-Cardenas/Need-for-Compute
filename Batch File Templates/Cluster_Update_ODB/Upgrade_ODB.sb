@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name="L36_ThickUP"
+#SBATCH --partition=alqadi
+#SBATCH --nodes=1
+#SBATCH --export=ALL
+#SBATCH --ntasks-per-node=40
+#SBATCH --time 96:00:00
+#SBATCH --mail-user=johannc2@illinois.edu
+#SBATCH --mail-type=ALL
+##
+module use /projects/eng/modulefiles
+module load abaqus/2021
+module load intel/18.0
+module load anaconda/2
+unset SLURM_GTIDS
+abaqus upgrade job=L36_ThickUP odb=L36_Thick
