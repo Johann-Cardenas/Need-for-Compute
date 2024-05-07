@@ -3,7 +3,6 @@
 #SBATCH --partition=compute
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=48
-###SBATCH --cpus-per-task=4
 #SBATCH --account=uic430
 #SBATCH --mem=240G
 #SBATCH --time=48:00:00
@@ -11,6 +10,24 @@
 #SBATCH --licenses=abaqus:25
 #SBATCH --mail-user=johannc2@illinois.edu
 #SBATCH --mail-type=ALL
+
+# Number of tokens to request per for license
+# Cores  Tokens
+#  1       5
+#  2       6
+#  3       7
+#  4       8
+#  6      10
+#  8      12
+# 12      14
+# 16      16
+# 24      19
+# 32      21
+# 48	    25
+# 64      28
+# 80      31
+# 96      34
+# 128     38 
 
 module reset
 export MODULEPATH=/expanse/projects/qstore/installs/modulefiles:$MODULEPATH

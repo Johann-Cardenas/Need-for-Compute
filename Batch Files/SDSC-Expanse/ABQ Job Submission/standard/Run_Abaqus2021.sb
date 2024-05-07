@@ -3,7 +3,6 @@
 #SBATCH --partition=shared
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=48
-###SBATCH --cpus-per-task=24
 #SBATCH --mem=235G
 #SBATCH --account=uic394
 #SBATCH --time=48:00:00
@@ -25,7 +24,7 @@
 # 16      16
 # 24      19
 # 32      21
-# 48	  25
+# 48	    25
 # 64      28
 # 128     38 
 
