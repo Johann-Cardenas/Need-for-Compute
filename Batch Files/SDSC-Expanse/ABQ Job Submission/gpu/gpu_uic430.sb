@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=TK_P1_SL0
-#SBATCH --partition=compute
+#SBATCH --partition=gpu
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=48
+#SBATCH --gres=gpu:4
+#SBATCH --export=ALL
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=40
 #SBATCH --account=uic430
-#SBATCH --mem=240G
 #SBATCH --time=48:00:00
+#SBATCH --mem=256G
 #SBATCH --output=abaqus.o%j.%N
-#SBATCH --licenses=abaqus:25
+#SBATCH --licenses=abaqus:27
 #SBATCH --mail-user=johannc2@illinois.edu
 #SBATCH --mail-type=ALL
 
@@ -33,7 +36,15 @@ module reset
 export MODULEPATH=/expanse/projects/qstore/installs/modulefiles:$MODULEPATH
 module load abaqus/2022
 module load cpu/0.15.4
+module load gpu/0.17.3b
 module load intel/19.1.1.217
+module load cuda12.2/toolkit/12.2.2
 unset SLURM_GTIDS
 
-abq2022 inp=TK_P1_SL0 job=TK_P1_SL0 user=UMAT scratch="/scratch/$USER/job_$SLURM_JOBID" cpus=48 mp_mode=mpi interactive
+abq2022 inp=TK_P1_SL0 job=TK_P1_SL0 user=UMAT scratch="/scratch/$USER/job_$SLURM_JOBID" cpus=40 gpus=4 gpu_mode=1 mp_mode=mpi memory=2560000mb interactive
+
+module unload cuda12.2/toolkit/12.2.2
+module unload intel/19.1.1.217
+module unload gpu/0.17.3b
+module unload cpu/0.15.4
+module unload abaqus/2022
