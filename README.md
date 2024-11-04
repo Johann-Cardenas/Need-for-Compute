@@ -52,5 +52,5 @@ The prony terms can be used to create a viscoelastic material model in Abaqus.
 Creates a temperature gradient fit based on initial and final temperature data, and outputs temperatures values at different depths of a pavement structure.
 The model parameters can be modified to meet specific needs (curve shape, gradient rate, etc)
 
-> [!TIP]
-> Understand the influence of each parameter in advance to control the features of the code.
+> [!NOTE]
+> Some folders within the repository have been cloned from existing repositories. Here are the corresponding credits.
